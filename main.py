@@ -3,7 +3,16 @@ def main():
     text = get_book_text(book_path)
     num_of_words = get_num_words(text)
     num_of_characters = get_num_characters(text)
-    print(num_of_characters)
+    character_list = dict_to_list(num_of_characters)
+
+    print(f"--- Begin report of {book_path} ---")
+    print(f"{num_of_words} of words found in the document")
+
+    for c_list in character_list:
+        if c_list["character"].isalpha():
+            print(f"The {c_list["character"]} was found {c_list["num"]} times")
+
+    print("--- End report ---")
 
 
 def get_book_text(path_to_file):
@@ -31,6 +40,19 @@ def get_num_characters(text):
         else:
             characters_dict[w] = 1
     return characters_dict
+
+
+def dict_to_list(dict):
+    dict_list = []
+
+    for d in dict:
+        dict_list.append({"character": d, "num": dict[d]})
+    dict_list.sort(reverse=True, key=sort_on)
+    return dict_list
+
+
+def sort_on(dict):
+    return dict["num"]
 
 
 main()
