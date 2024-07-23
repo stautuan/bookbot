@@ -8,9 +8,9 @@ def main():
     print(f"--- Begin report of {book_path} ---")
     print(f"{num_of_words} of words found in the document")
 
-    for c_list in character_list:
-        if c_list["character"].isalpha():
-            print(f"The {c_list["character"]} was found {c_list["num"]} times")
+    for c in character_list:
+        if c["character"].isalpha():
+            print(f"The {c["character"]} was found {c["num"]} times")
 
     print("--- End report ---")
 
